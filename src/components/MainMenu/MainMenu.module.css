@@ -1,0 +1,22 @@
+.Logo {
+    -webkit-animation: mover 700ms infinite  alternate;
+    animation: mover 700ms infinite  alternate;
+}
+
+@-webkit-keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-12px);
+    }
+}
