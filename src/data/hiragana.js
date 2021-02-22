@@ -479,7 +479,7 @@ const hiragana1 = [
     },
     {
         id: 11,
-        romaji: "SI",
+        romaji: "SHI",
         kana: "し",
     },
     {
