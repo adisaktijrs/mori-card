@@ -549,4 +549,237 @@ const hiragana1 = [
     },
 ];
 
-export { hiragana, hiragana1 };
+const hiragana2 = [
+    {
+        id: 0,
+        romaji: "A",
+        kana: "あ",
+    },
+    {
+        id: 1,
+        romaji: "I",
+        kana: "い",
+    },
+    {
+        id: 2,
+        romaji: "U",
+        kana: "う",
+    },
+    {
+        id: 3,
+        romaji: "E",
+        kana: "え",
+    },
+    {
+        id: 4,
+        romaji: "O",
+        kana: "お",
+    },
+    {
+        id: 5,
+        romaji: "KA",
+        kana: "か",
+    },
+    {
+        id: 6,
+        romaji: "KI",
+        kana: "き",
+    },
+    {
+        id: 7,
+        romaji: "KU",
+        kana: "く",
+    },
+    {
+        id: 8,
+        romaji: "KE",
+        kana: "け",
+    },
+    {
+        id: 9,
+        romaji: "KO",
+        kana: "こ",
+    },
+    {
+        id: 10,
+        romaji: "SA",
+        kana: "さ",
+    },
+    {
+        id: 11,
+        romaji: "SHI",
+        kana: "し",
+    },
+    {
+        id: 12,
+        romaji: "SU",
+        kana: "す",
+    },
+    {
+        id: 13,
+        romaji: "SE",
+        kana: "せ",
+    },
+    {
+        id: 14,
+        romaji: "SO",
+        kana: "そ",
+    },
+    {
+        id: 15,
+        romaji: "TA",
+        kana: "た",
+    },
+    {
+        id: 16,
+        romaji: "CHI",
+        kana: "ち",
+    },
+    {
+        id: 17,
+        romaji: "TSU",
+        kana: "つ",
+    },
+    {
+        id: 18,
+        romaji: "TE",
+        kana: "て",
+    },
+    {
+        id: 19,
+        romaji: "TO",
+        kana: "と",
+    },
+    {
+        id: 20,
+        romaji: "NA",
+        kana: "な",
+    },
+    {
+        id: 21,
+        romaji: "NI",
+        kana: "に",
+    },
+    {
+        id: 22,
+        romaji: "NU",
+        kana: "ぬ",
+    },
+    {
+        id: 23,
+        romaji: "NE",
+        kana: "ね",
+    },
+    {
+        id: 24,
+        romaji: "NO",
+        kana: "の",
+    },
+    {
+        id: 25,
+        romaji: "HA",
+        kana: "は",
+    },
+    {
+        id: 26,
+        romaji: "HI",
+        kana: "ひ",
+    },
+    {
+        id: 27,
+        romaji: "FU",
+        kana: "ふ",
+    },
+    {
+        id: 28,
+        romaji: "HE",
+        kana: "へ",
+    },
+    {
+        id: 29,
+        romaji: "HO",
+        kana: "ほ",
+    },
+    {
+        id: 30,
+        romaji: "MA",
+        kana: "ま",
+    },
+    {
+        id: 31,
+        romaji: "MI",
+        kana: "み",
+    },
+    {
+        id: 32,
+        romaji: "MU",
+        kana: "む",
+    },
+    {
+        id: 33,
+        romaji: "ME",
+        kana: "め",
+    },
+    {
+        id: 34,
+        romaji: "MO",
+        kana: "も",
+    },
+    {
+        id: 35,
+        romaji: "YA",
+        kana: "や",
+    },
+    {
+        id: 36,
+        romaji: "YU",
+        kana: "ゆ",
+    },
+    {
+        id: 37,
+        romaji: "YO",
+        kana: "よ",
+    },
+    {
+        id: 38,
+        romaji: "RA",
+        kana: "ら",
+    },
+    {
+        id: 39,
+        romaji: "RI",
+        kana: "り",
+    },
+    {
+        id: 40,
+        romaji: "RU",
+        kana: "る",
+    },
+    {
+        id: 41,
+        romaji: "RE",
+        kana: "れ",
+    },
+    {
+        id: 42,
+        romaji: "RO",
+        kana: "ろ",
+    },
+    {
+        id: 43,
+        romaji: "WA",
+        kana: "わ",
+    },
+    {
+        id: 44,
+        romaji: "WO",
+        kana: "を",
+    },
+    {
+        id: 45,
+        romaji: "N",
+        kana: "ん",
+    },
+];
+
+export { hiragana1, hiragana2 };

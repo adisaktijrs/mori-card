@@ -19,7 +19,7 @@ import {
     Th,
     Td,
 } from "@chakra-ui/react";
-import { hiragana1 } from "../../data/hiragana";
+import { hiragana1, hiragana2 } from "../../data/hiragana";
 
 class Game extends Component {
     state = {
@@ -34,22 +34,23 @@ class Game extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({ openApp: true });
-        }, 200);
+        }, 100);
     }
 
     render() {
+        const level = this.props.gameOption.level === 1 ? hiragana1 : hiragana2;
         const randomOption = () => {
             let a = [];
             let randomPosition = Math.floor(Math.random() * 3);
             for (let i = 0; i < 3; i++) {
-                let b = Math.floor(Math.random() * hiragana1.length);
+                let b = Math.floor(Math.random() * level.length);
                 a.push(b);
             }
             a.splice(randomPosition, 0, this.state.question);
             let uniqArr = [...new Set(a)];
 
             while (uniqArr.length < 4) {
-                uniqArr.push(Math.floor(Math.random() * hiragana1.length));
+                uniqArr.push(Math.floor(Math.random() * level.length));
             }
 
             return uniqArr;
@@ -72,8 +73,6 @@ class Game extends Component {
             this.setState({ num: nums });
 
             if (this.state.num === this.props.gameOption.totalQuestion) {
-                console.log(this.state.userAnswer);
-                console.log(this.props.questionArr);
                 this.setState({ openResult: true });
             }
         };
@@ -102,16 +101,16 @@ class Game extends Component {
                     }}
                     shadow="md"
                     onClick={answerHandler}
-                    value={hiragana1[item].romaji}
+                    value={level[item].romaji}
                 >
-                    {hiragana1[item].romaji}
+                    {level[item].romaji}
                 </Box>
             );
         });
 
         const result = this.props.questionArr.map((item, idx) => {
             let result = 0;
-            if (hiragana1[item].romaji === this.state.userAnswer[idx]) {
+            if (level[item].romaji === this.state.userAnswer[idx]) {
                 result++;
             }
             return result;
@@ -129,14 +128,14 @@ class Game extends Component {
         }
 
         const resultTable = this.props.questionArr.map((item, idx) => {
-            let mark = "😍✨";
-            if (hiragana1[item].romaji !== this.state.userAnswer[idx]) {
-                mark = "😡👎🏻";
+            let mark = "😍";
+            if (level[item].romaji !== this.state.userAnswer[idx]) {
+                mark = "👎🏻";
             }
             return (
                 <Tr key={idx}>
                     <Td>
-                        {hiragana1[item].kana} - {hiragana1[item].romaji}
+                        {idx+1}.{" "}{level[item].kana} - {level[item].romaji}
                     </Td>
                     <Td>{this.state.userAnswer[idx]}</Td>
                     <Td>{mark}</Td>
@@ -165,7 +164,7 @@ class Game extends Component {
                             </Box>
                             <Box bg="transparent" mx={4}>
                                 <Text fontSize="8xl" align="center">
-                                    {hiragana1[this.state.question].kana}
+                                    {level[this.state.question].kana}
                                 </Text>
                             </Box>
 
@@ -203,7 +202,7 @@ class Game extends Component {
                                     <Thead>
                                         <Tr>
                                             <Th>Question</Th>
-                                            <Th>Your answer</Th>
+                                            <Th>Ur answer</Th>
                                             <Th>Mark</Th>
                                         </Tr>
                                     </Thead>

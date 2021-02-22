@@ -24,6 +24,11 @@ const Level = ({
     handleTime,
     gameOption,
     setStartGame,
+    setGameOption,
+    level,
+    levelName,
+    levelFirstText,
+    levelSecondText,
 }) => {
     const closeAndExecute = () => {
         setStartGame(true);
@@ -38,14 +43,15 @@ const Level = ({
                 mx="2"
                 borderWidth="1px"
                 rounded="lg"
+                onClick={() => setGameOption({ ...gameOption, level: level })}
             >
                 <Heading size="lg" my="1">
                     <LinkOverlay style={{ cursor: "pointer" }} onClick={onOpen}>
-                        🥱 EASY
+                        {levelName}
                     </LinkOverlay>
                 </Heading>
-                <Text>Test few character groups only.</Text>
-                <Text>(Aぁ, Kaか, Saさ, Taた, Naな group)</Text>
+                <Text>{levelFirstText}</Text>
+                <Text>{levelSecondText}</Text>
             </LinkBox>
 
             <Modal

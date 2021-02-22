@@ -26,7 +26,7 @@ const MainMenu = () => {
     useEffect(() => {
         setTimeout(() => {
             setOpenApp(true);
-        }, 200);
+        }, 100);
     }, []);
     return (
         <Flex bg="#FAFAFA" justify="center" align="center" h="100vh">

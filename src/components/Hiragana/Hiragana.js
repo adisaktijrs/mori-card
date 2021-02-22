@@ -10,7 +10,7 @@ import {
     Heading,
     useDisclosure,
 } from "@chakra-ui/react";
-import { hiragana1 } from "../../data/hiragana";
+import { hiragana1, hiragana2 } from "../../data/hiragana";
 import Game from "../Game/Game";
 import Header from "./Header";
 import Level from "./Level";
@@ -27,18 +27,19 @@ const MainMenu = () => {
     // Generate 'unique' random questions.
     // I know it's a mess and not really generate unique questions.
     // I'll fix it later, if i wish tbh lol
+    const level = gameOption.level === 1 ? hiragana1 : hiragana2;
     const randomArr = (option, max) => {
         let arr = [];
         for (let i = 0; i < max; i++) {
             let a = Math.floor(Math.random() * option.length);
             arr.push(a);
-        } 
+        }
         return arr;
-    }
-    let rawQuestionArr = randomArr(hiragana1, gameOption.totalQuestion);
+    };
+    let rawQuestionArr = randomArr(level, gameOption.totalQuestion);
     let questionArr = [...new Set(rawQuestionArr)];
     while (questionArr.length < gameOption.totalQuestion) {
-        questionArr.push(Math.floor(Math.random() * hiragana1.length));
+        questionArr.push(Math.floor(Math.random() * level.length));
     }
 
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -46,7 +47,7 @@ const MainMenu = () => {
     useEffect(() => {
         setTimeout(() => {
             setOpenApp(true);
-        }, 200);
+        }, 100);
     }, []);
 
     const handleTime = (e) => {
@@ -61,17 +62,10 @@ const MainMenu = () => {
         setGameOption({ ...gameOption, [name]: question });
     };
 
-    const randomKana = (max) => {
-        return Math.floor(Math.random() * Math.floor(max));
-    };
-
-    const kanaLevel1 = randomKana(hiragana1.length);
-
     return (
         <Flex bg="#FAFAFA" justify="center" align="center" h="100vh">
             {startGame ? (
                 <Game
-                    kanaLevel={kanaLevel1}
                     questionArr={questionArr}
                     gameOption={gameOption}
                     setStartGame={setStartGame}
@@ -102,30 +96,27 @@ const MainMenu = () => {
                                 handleTime={handleTime}
                                 gameOption={gameOption}
                                 setStartGame={setStartGame}
+                                setGameOption={setGameOption}
+                                level={1}
+                                levelName="🥱 EASY"
+                                levelFirstText="Test few character groups only."
+                                levelSecondText="(Aぁ, Kaか, Saさ, Taた, Naな group)"
                             />
 
-                            <LinkBox
-                                as="article"
-                                maxW="sm"
-                                p="2"
-                                mx="2"
-                                borderWidth="1px"
-                                rounded="lg"
-                            >
-                                <Heading size="lg" my="1">
-                                    <LinkOverlay
-                                        style={{ cursor: "pointer" }}
-                                        onClick={() => alert("lol")}
-                                    >
-                                        😧 MEDIUM
-                                    </LinkOverlay>
-                                </Heading>
-                                <Text>
-                                    Test all basic characters of
-                                    Hiragana/Gojūon.
-                                </Text>
-                                <Text>(Aぁ - Nん)</Text>
-                            </LinkBox>
+                            <Level
+                                onOpen={onOpen}
+                                onClose={onClose}
+                                isOpen={isOpen}
+                                handleQuestion={handleQuestion}
+                                handleTime={handleTime}
+                                gameOption={gameOption}
+                                setStartGame={setStartGame}
+                                setGameOption={setGameOption}
+                                level={2}
+                                levelName="😧 MEDIUM"
+                                levelFirstText="Test all basic characters of Hiragana/Gojūon."
+                                levelSecondText="(Aぁ - Nん)"
+                            />
 
                             <LinkBox
                                 as="article"
