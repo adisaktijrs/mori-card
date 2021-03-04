@@ -5,21 +5,11 @@ import {
     Text,
     SimpleGrid,
     ScaleFade,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    Button,
-    Table,
-    Thead,
-    Tbody,
     Tr,
-    Th,
     Td,
 } from "@chakra-ui/react";
 import { hiragana1, hiragana2 } from "../../data/hiragana";
+import ModalScore from "./ModalScore";
 
 class Game extends Component {
     state = {
@@ -135,13 +125,21 @@ class Game extends Component {
             return (
                 <Tr key={idx}>
                     <Td>
-                        {idx+1}.{" "}{level[item].kana} - {level[item].romaji}
+                        {idx + 1}. {level[item].kana} - {level[item].romaji}
                     </Td>
                     <Td>{this.state.userAnswer[idx]}</Td>
                     <Td>{mark}</Td>
                 </Tr>
             );
         });
+
+        const closeButtonHandler = () => {
+            this.setState({ openResult: false });
+        };
+
+        const backToMenuHandler = () => {
+            this.props.setStartGame(false);
+        };
 
         return (
             <Flex bg="#FAFAFA" justify="center" align="center" h="100vh">
@@ -186,54 +184,15 @@ class Game extends Component {
                             </Box>
                         </SimpleGrid>
                     </Box>
-                    <Modal
-                        closeOnOverlayClick={false}
-                        isOpen={this.state.openResult}
-                        onClose={() => this.setState({ openResult: false })}
-                        mx={3}
-                        closeOnEsc={false}
-                        scrollBehavior="inside"
-                    >
-                        <ModalOverlay />
-                        <ModalContent mx={3}>
-                            <ModalHeader>Your Result</ModalHeader>
-                            <ModalBody pb={6}>
-                                <Table variant="simple" size="sm">
-                                    <Thead>
-                                        <Tr>
-                                            <Th>Question</Th>
-                                            <Th>Ur answer</Th>
-                                            <Th>Mark</Th>
-                                        </Tr>
-                                    </Thead>
-                                    <Tbody>{resultTable}</Tbody>
-                                </Table>
-                                <Text align="center" mt={3}>
-                                    <strong>
-                                        {"You got " +
-                                            resultScore +
-                                            "/" +
-                                            this.props.gameOption
-                                                .totalQuestion +
-                                            ". " +
-                                            textResult}
-                                    </strong>
-                                </Text>
-                            </ModalBody>
-
-                            <ModalFooter>
-                                <Button
-                                    colorScheme="blue"
-                                    mr={3}
-                                    onClick={() =>
-                                        this.props.setStartGame(false)
-                                    }
-                                >
-                                    Bring me back!
-                                </Button>
-                            </ModalFooter>
-                        </ModalContent>
-                    </Modal>
+                    <ModalScore
+                        openResult={this.state.openResult}
+                        closeButtonHandler={closeButtonHandler}
+                        resultTable={resultTable}
+                        resultScore={resultScore}
+                        textResult={textResult}
+                        backToMenuHandler={backToMenuHandler}
+                        totalQuestion={this.props.gameOption.totalQuestion}
+                    />
                 </ScaleFade>
             </Flex>
         );
